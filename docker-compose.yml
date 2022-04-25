@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  jenkins:
+    image: sslcom/jenkins:lts
+    build:
+      context: ./jenkins
+      dockerfile: Dockerfile
+    container_name: jenkins
+    hostname: jenkins
+    privileged: true
+    user: root
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - volume-jenkins:/var/jenkins_home
+
+volumes:
+  volume-jenkins: {}
