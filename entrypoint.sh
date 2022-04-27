@@ -30,10 +30,12 @@ if [[ ! "${CMD[@]}" =~ .*"--help".* ]]; then
 
   if [[ ! "${CMD[@]}" =~ .*"get_credential_ids".* ]]; then
       [ ! -z $CREDENTIAL_ID ] && COMMAND="${COMMAND} -credential_id=${CREDENTIAL_ID}"
-      [ ! -z $TOTP_SECRET ] && COMMAND="${COMMAND} -totp_secret=${TOTP_SECRET}"
-      [ ! -z $PROGRAM_NAME ] && COMMAND="${COMMAND} -program_name=${PROGRAM_NAME}"
-      [ ! -z $FILE_PATH ] && COMMAND="${COMMAND} -input_file_path=${FILE_PATH}"
-      [ ! -z $OUTPUT_PATH ] && COMMAND="${COMMAND} -output_dir_path=${OUTPUT_PATH}"
+      if [[ ! "${CMD[@]}" =~ .*"credential_info".* ]]; then
+        [ ! -z $TOTP_SECRET ]  && COMMAND="${COMMAND} -totp_secret=${TOTP_SECRET}"
+        [ ! -z $PROGRAM_NAME ] && COMMAND="${COMMAND} -program_name=${PROGRAM_NAME}"
+        [ ! -z $FILE_PATH ]    && COMMAND="${COMMAND} -input_file_path=${FILE_PATH}"
+        [ ! -z $OUTPUT_PATH ]  && COMMAND="${COMMAND} -output_dir_path=${OUTPUT_PATH}"
+      fi
   fi
 fi
 
