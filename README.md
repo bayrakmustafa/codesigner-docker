@@ -12,15 +12,29 @@ For more information and related downloads for CodeSignTool, please visit <https
 
 # How to use this image
 
-## Sign an artifact with `CodeSignTool`
+## Get Credential Ids
 
-Sign an artifact with env file:
+Using env file:
+
+```console
+$ docker run -it --rm --env-file .env ghcr.io/bayrakmustafa/codesigner:latest get_credential_ids
+```
+
+Using enviroment variables:
+
+```console
+$ docker run -it --rm -e USERNAME=${USERNAME} -e PASSWORD=${PASSWORD} -e CREDENTIAL_ID=${CREDENTIAL_ID} -e TOTP_SECRET=${TOTP_SECRET} -e ENVIRONMENT_NAME=${ENVIRONMENT_NAME} ghcr.io/bayrakmustafa/codesigner:latest get_credential_ids
+```
+
+## Sign an artifact
+
+Using env file:
 
 ```console
 $ docker run -it --rm --env-file .env ghcr.io/bayrakmustafa/codesigner:latest sign -input_file_path=/codesign/examples/codesign.ps1 -output_dir_path=/codesign/output
 ```
 
-Sign an artifact without using env file:
+Using enviroment variables:
 
 ```console
 $ docker run -i --rm -e USERNAME=${USERNAME} -e PASSWORD=${PASSWORD} -e CREDENTIAL_ID=${CREDENTIAL_ID} -e TOTP_SECRET=${TOTP_SECRET} -e ENVIRONMENT_NAME=${ENVIRONMENT_NAME} ghcr.io/bayrakmustafa/codesigner:latest sign -input_file_path=/codesign/examples/codesign.ps1 -output_dir_path=/codesign/output
