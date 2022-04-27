@@ -139,7 +139,6 @@ Code signed successfully: /codesign/output/codesign.ps1
 ```
 
 ## Environment Variables
---------------
 
 #### `Sample Environment File`
 
