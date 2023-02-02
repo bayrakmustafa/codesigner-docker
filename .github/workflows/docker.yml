@@ -72,7 +72,7 @@ jobs:
         run: docker run -i --rm --volume ${GITHUB_WORKSPACE}/artifacts:/codesign/output --env-file .env ${{ env.DOCKER_IMAGE_NAME }} sign -input_file_path=/codesign/examples/codesign.ps1 -output_dir_path=/codesign/output
 
       - name: Upload Signed Files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: codesign.ps1
           path: ./artifacts/codesign.ps1
