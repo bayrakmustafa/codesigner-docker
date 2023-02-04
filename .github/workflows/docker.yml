@@ -37,7 +37,7 @@ jobs:
           password: ${{ secrets.PAT_TOKEN }}
 
       - name: Build the Docker Image
-        run: docker buildx build --platform linux/amd64,linux/arm64,linux/arm/7 --provenance=false --sbom=false . --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }} --push
+        run: docker buildx build --platform linux/amd64,linux/arm64,linux/arm/7 --sbom=false . --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }} --push
 
   test:
     runs-on: ubuntu-latest
