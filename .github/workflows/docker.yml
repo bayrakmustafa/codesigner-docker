@@ -36,10 +36,7 @@ jobs:
           password: ${{ secrets.PAT_TOKEN }}
 
       - name: Build the Docker Image
-        run: docker buildx build --platform linux/amd64,linux/arm64,linux/arm/7 . --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }}
-
-      - name: Push Docker image to Github Package Registry
-        run: docker push ${{ env.DOCKER_IMAGE_NAME }}
+        run: docker buildx build --platform linux/amd64,linux/arm64,linux/arm/7 . --file Dockerfile --tag ${{ env.DOCKER_IMAGE_NAME }} --push
 
   test:
     runs-on: ubuntu-latest
